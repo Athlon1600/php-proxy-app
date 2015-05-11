@@ -1,6 +1,8 @@
 # php-proxy-app
 Web Proxy Application built on php-proxy library ready to be installed on your server
 
+![alt text](http://i.imgur.com/KrtU5KE.png?1 "This is how PHP-Proxy looks when installed")
+
 ## Installation
 
 Keep in mind that this is a **project** and not a library. Installing this via *require* would do you not good.

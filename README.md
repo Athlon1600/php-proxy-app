@@ -1,5 +1,5 @@
 # php-proxy-app
-Web Proxy Application built on php-proxy library ready to be installed on your server
+Web Proxy Application built on [**php-proxy library**](https://github.com/Athlon1600/php-proxy) ready to be installed on your server
 
 ![alt text](http://i.imgur.com/KrtU5KE.png?1 "This is how PHP-Proxy looks when installed")
 
@@ -12,7 +12,7 @@ A project such as this, should be installed straight into the public directory o
 composer create-project athlon1600/php-proxy-app:dev-master /var/www/
 ```
 
-If you do not have composer or trying to host this application on a **shared hosting**, then download a pre-installed version of this app from [**www.php-proxy.com**](https://www.php-proxy.com/)
+If you do not have composer or trying to host this application on a **shared hosting**, then download a pre-installed version of this app as a ZIP archive from [**www.php-proxy.com**](https://www.php-proxy.com/)
 
 ## Keep it up-to-date
 
@@ -28,8 +28,8 @@ This file will be loaded into the global Config class.
 
 #### /templates/
 
-This is where we store all the "views"
+This should have been named "views", but for historic purposes we keep it as templates. What this is...
 
-### /plugins/
+#### /plugins/
 
 PHP-Proxy has many of its native plugins, but users are free to write their own which could then be loaded from this very folder. See /plugins/TestPlugin.php for an example.

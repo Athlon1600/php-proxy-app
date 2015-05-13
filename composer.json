@@ -1,10 +1,15 @@
 {
 	"name": "athlon1600/php-proxy-app",
 	"type": "project",
-	"version": "1.0.0",
-	"keywords": ["php proxy", "php proxy application", "php proxy web", "proxy script", "php web proxy", "web proxy"],
+	"version": "2.0.0",
+	"license": "MIT",
+	"description": "Web proxy application project powered by PHP-Proxy library",
+	"keywords": ["php proxy application", "php proxy web", "proxy script", "php web proxy", "web proxy"],
 	"homepage": "https://www.php-proxy.com/",
 	"require": {
 		"athlon1600/php-proxy": "@dev"
-	}
+	},
+	"post-create-project-cmd": [
+		"php -f setup.txt"
+	]
 }

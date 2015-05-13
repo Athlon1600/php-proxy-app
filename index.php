@@ -1,10 +1,8 @@
 <?php
 
-require("vendor/autoload.php");
-
 define('PROXY_START', microtime(true));
-define('SCRIPT_BASE', (!empty($_SERVER['HTTPS']) ? 'https://' : 'http://').$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']);
-define('SCRIPT_DIR', pathinfo(SCRIPT_BASE, PATHINFO_DIRNAME).'/');
+
+require("vendor/autoload.php");
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,8 +13,22 @@ use Proxy\Event\FilterEvent;
 use Proxy\Config;
 use Proxy\Proxy;
 
+// start the session
+session_start();
+
 // load config...
 Config::load('./config.php');
+
+if(!Config::get('app_key')){
+	die("app_key inside config.php cannot be empty!");
+}
+
+// how are our URLs be generated from this point? this must be set here so the proxify_url function below can make use of it
+if(Config::get('url_mode') == 1){
+	Config::set('encryption_key', md5(Config::get('app_key').$_SERVER['REMOTE_ADDR']));
+} else if(Config::get('url_mode') == 2){
+	Config::set('encryption_key', md5(Config::get('app_key').session_id()));
+}
 
 // form submit in progress...
 if(isset($_POST['url'])){
@@ -25,7 +37,7 @@ if(isset($_POST['url'])){
 	$url = add_http($url);
 	
 	header("HTTP/1.1 302 Found");
-	header('Location: '.SCRIPT_BASE.'?q='.encrypt_url($url));
+	header('Location: '.proxify_url($url));
 	exit;
 	
 } else if(!isset($_GET['q'])){
@@ -38,20 +50,16 @@ if(isset($_POST['url'])){
 		header("Location: ".Config::get('index_redirect'));
 		
 	} else {
-		echo render_template("./templates/main.php", array('script_base' => SCRIPT_BASE, 'version' => Proxy::VERSION));
+		echo render_template("./templates/main.php", array('version' => Proxy::VERSION));
 	}
 
 	exit;
 }
 
-
-// get real URL
-$url = decrypt_url($_GET['q']);
-define('URL', $url);
-
+// decode q parameter to get the real URL
+$url = base64_decrypt($_GET['q']);
 
 $proxy = new Proxy();
-
 
 // load plugins
 foreach(Config::get('plugins', array()) as $plugin){
@@ -63,12 +71,13 @@ foreach(Config::get('plugins', array()) as $plugin){
 		// use user plugin from /plugins/
 		require_once('./plugins/'.$plugin_class.'.php');
 		
-	} else {
+	} else if(class_exists('\\Proxy\\Plugin\\'.$plugin_class)){
 	
-		// use native plugin from php-proxy - it was already loaded into namespace automatically through composer
+		// does the native plugin from php-proxy package with such name exist?
 		$plugin_class = '\\Proxy\\Plugin\\'.$plugin_class;
 	}
 	
+	// otherwise plugin_class better be loaded already and match namespace exactly \\Vendor\\Plugin\\SuperPlugin
 	$proxy->getEventDispatcher()->addSubscriber(new $plugin_class());
 }
 
@@ -86,8 +95,7 @@ $proxy->getEventDispatcher()->addListener('request.complete', function($event){
 	}
 	
 	$url_form = render_template("./templates/url_form.php", array(
-		'url' => $url,
-		'script_base' => SCRIPT_BASE
+		'url' => $url
 	));
 	
 	$output = $response->getContent();
@@ -131,7 +139,6 @@ try {
 	
 		echo render_template("./templates/main.php", array(
 			'url' => $url,
-			'script_base' => SCRIPT_BASE,
 			'error_msg' => $ex->getMessage(),
 			'version' => Proxy::VERSION
 		));

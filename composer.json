@@ -1,7 +1,7 @@
 {
 	"name": "athlon1600/php-proxy-app",
 	"type": "project",
-	"version": "2.0.0",
+	"version": "3.0.0",
 	"license": "MIT",
 	"description": "Web proxy application project powered by PHP-Proxy library",
 	"keywords": ["php proxy application", "php proxy web", "proxy script", "php web proxy", "web proxy"],

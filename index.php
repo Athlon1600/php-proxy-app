@@ -4,10 +4,8 @@ define('PROXY_START', microtime(true));
 
 require("vendor/autoload.php");
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ParameterBag;
-
+use Proxy\Http\Request;
+use Proxy\Http\Response;
 use Proxy\Plugin\AbstractPlugin;
 use Proxy\Event\FilterEvent;
 use Proxy\Config;

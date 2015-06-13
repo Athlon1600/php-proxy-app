@@ -115,6 +115,9 @@ try {
 	// request sent to index.php
 	$request = Request::createFromGlobals();
 	
+	// remove all GET parameters such as ?q=
+	$request->get->clear();
+	
 	// forward it to some other URL
 	$response = $proxy->forward($request, $url);
 	

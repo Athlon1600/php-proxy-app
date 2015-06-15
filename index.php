@@ -17,6 +17,9 @@ session_start();
 // load config...
 Config::load('./config.php');
 
+// custom config file to be written to by a bash script or something
+Config::load('./custom_config.php');
+
 if(!Config::get('app_key')){
 	die("app_key inside config.php cannot be empty!");
 }
@@ -44,7 +47,7 @@ if(isset($_POST['url'])){
 	if(Config::get('index_redirect')){
 		
 		// redirect to...
-		header("HTTP/1.1 301 Moved Permanently"); 
+		header("HTTP/1.1 302 Found"); 
 		header("Location: ".Config::get('index_redirect'));
 		
 	} else {

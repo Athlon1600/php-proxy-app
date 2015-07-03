@@ -20,11 +20,12 @@ $config['url_mode'] = 1;
 
 // plugins to load - plugins will be loaded in this exact order as in array
 $config['plugins'] = array(
-	'Test',
 	'HeaderRewrite',
 	'Stream',
-	//'Cookie', not working at the moment
+	// ^^ do not disable any of the plugins above
+	'Cookie',
 	'Proxify',
+	'UrlForm',
 	// site specific plugins below
 	'Youtube',
 	'DailyMotion',

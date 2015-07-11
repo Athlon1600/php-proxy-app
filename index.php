@@ -24,12 +24,19 @@ if(!Config::get('app_key')){
 	die("app_key inside config.php cannot be empty!");
 }
 
+if(!function_exists('curl_version')){
+	die("cURL extension is not loaded!");
+}
+
 // how are our URLs be generated from this point? this must be set here so the proxify_url function below can make use of it
 if(Config::get('url_mode') == 1){
 	Config::set('encryption_key', md5(Config::get('app_key').$_SERVER['REMOTE_ADDR']));
 } else if(Config::get('url_mode') == 2){
 	Config::set('encryption_key', md5(Config::get('app_key').session_id()));
 }
+
+// very important!!! otherwise requests are queued while waiting for session file to be unlocked
+session_write_close();
 
 // form submit in progress...
 if(isset($_POST['url'])){
@@ -78,7 +85,7 @@ foreach(Config::get('plugins', array()) as $plugin){
 		$plugin_class = '\\Proxy\\Plugin\\'.$plugin_class;
 	}
 	
-	// otherwise plugin_class better be loaded already and match namespace exactly \\Vendor\\Plugin\\SuperPlugin
+	// otherwise plugin_class better be loaded already through composer.json and match namespace exactly \\Vendor\\Plugin\\SuperPlugin
 	$proxy->getEventDispatcher()->addSubscriber(new $plugin_class());
 }
 

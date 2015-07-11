@@ -1,3 +1,4 @@
 /vendor/*
+/storage/*
 composer.lock
 .htaccess

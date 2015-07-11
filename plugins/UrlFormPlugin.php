@@ -33,7 +33,6 @@ class UrlFormPlugin extends AbstractPlugin {
 		}
 		
 		$response->setContent($output);
-		
 	}
 }
 

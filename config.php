@@ -41,6 +41,8 @@ $config['curl'] = array(
 	// CURLOPT_CONNECTTIMEOUT => 5
 );
 
+//$config['replace_title'] = 'Google Search';
+
 //$config['error_redirect'] = "https://unblockvideos.com/#error={error_msg}";
 //$config['index_redirect'] = 'https://unblockvideos.com/';
 

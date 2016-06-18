@@ -29,9 +29,9 @@ if(!function_exists('curl_version')){
 }
 
 // how are our URLs be generated from this point? this must be set here so the proxify_url function below can make use of it
-if(Config::get('url_mode') == 1){
+if(Config::get('url_mode') == 2){
 	Config::set('encryption_key', md5(Config::get('app_key').$_SERVER['REMOTE_ADDR']));
-} else if(Config::get('url_mode') == 2){
+} else if(Config::get('url_mode') == 3){
 	Config::set('encryption_key', md5(Config::get('app_key').session_id()));
 }
 
@@ -65,7 +65,7 @@ if(isset($_POST['url'])){
 }
 
 // decode q parameter to get the real URL
-$url = base64_decrypt($_GET['q']);
+$url = url_decrypt($_GET['q']);
 
 $proxy = new Proxy();
 

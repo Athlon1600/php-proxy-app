@@ -47,6 +47,8 @@ $config['curl'] = array(
 //$config['error_redirect'] = "https://unblockvideos.com/#error={error_msg}";
 //$config['index_redirect'] = 'https://unblockvideos.com/';
 
+// $config['replace_icon'] = 'icon_url';
+
 // this better be here other Config::load fails
 return $config;
 

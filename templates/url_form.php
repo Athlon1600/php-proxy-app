@@ -36,8 +36,6 @@ html body {
 	background: none repeat scroll 0% 0% #FFF;
 }
 
-
-
 </style>
 
 <script src="//www.php-proxy.com/assets/url_form.js"></script>

@@ -38,7 +38,24 @@ html body {
 
 </style>
 
-<script src="//www.php-proxy.com/assets/url_form.js"></script>
+<script>
+var url_text_selected = false;
+
+function smart_select(ele){
+
+	ele.onblur = function(){
+		url_text_selected = false;
+	};
+	
+	ele.onclick = function(){
+		if(url_text_selected == false){
+			this.focus();
+			this.select();
+			url_text_selected = true;
+		}
+	};
+}
+</script>
 
 <div id="top_form">
 

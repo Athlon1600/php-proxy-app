@@ -32,7 +32,8 @@ if(!function_exists('curl_version')){
 if(Config::get('url_mode') == 2){
 	Config::set('encryption_key', md5(Config::get('app_key').$_SERVER['REMOTE_ADDR']));
 } else if(Config::get('url_mode') == 3){
-	Config::set('encryption_key', md5(Config::get('app_key').session_id()));
+	$session_id = (session_id() != "" && preg_match('/^[a-zA-Z0-9-]+$/', session_id())) ? session_id() : $_SERVER['HTTP_HOST'].$_SERVER['REMOTE_ADDR'];
+	Config::set('encryption_key', md5(Config::get('app_key').$session_id));
 }
 
 // very important!!! otherwise requests are queued while waiting for session file to be unlocked

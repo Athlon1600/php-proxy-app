@@ -21,25 +21,25 @@ $config['url_mode'] = 2;
 
 // plugins to load - plugins will be loaded in this exact order as in array
 $config['plugins'] = array(
-	'HeaderRewrite',
-	'Stream',
-	// ^^ do not disable any of the plugins above
-	'Cookie',
-	'Proxify',
-	'UrlForm',
-	// site specific plugins below
-	'Youtube',
-	'DailyMotion',
-	'RedTube',
-	'XHamster',
-	'XVideos',
-	'Twitter'
+    'HeaderRewrite',
+    'Stream',
+    // ^^ do not disable any of the plugins above
+    'Cookie',
+    'Proxify',
+    'UrlForm',
+    // site specific plugins below
+    'Youtube',
+    'DailyMotion',
+    'RedTube',
+    'XHamster',
+    'XVideos',
+    'Twitter'
 );
 
 // additional curl options to go with each request
 $config['curl'] = array(
-	// CURLOPT_PROXY => '',
-	// CURLOPT_CONNECTTIMEOUT => 5
+    // CURLOPT_PROXY => '',
+    // CURLOPT_CONNECTTIMEOUT => 5
 );
 
 //$config['replace_title'] = 'Google Search';
@@ -51,5 +51,3 @@ $config['curl'] = array(
 
 // this better be here other Config::load fails
 return $config;
-
-?>

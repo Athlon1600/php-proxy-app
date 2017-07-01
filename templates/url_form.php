@@ -63,7 +63,7 @@ function smart_select(ele){
 	
 		<form method="post" action="index.php" target="_top" style="margin:0; padding:0;">
 			<input type="button" value="Home" onclick="window.location.href='index.php'">
-			<input type="text" name="url" value="<?php echo $url; ?>" autocomplete="off">
+			<input type="text" name="url" value="<?php echo rawurldecode($url); ?>" autocomplete="off">
 			<input type="hidden" name="form" value="1">
 			<input type="submit" value="Go">
 		</form>

@@ -12,7 +12,10 @@ A project such as this, should be installed straight into the public directory o
 composer create-project athlon1600/php-proxy-app:dev-master /var/www/
 ```
 
-If you do not have composer or trying to host this application on a **shared hosting**, then download a pre-installed version of this app as a ZIP archive from [**www.php-proxy.com**](https://www.php-proxy.com/)
+If you do not have composer or trying to host this application on a **shared hosting**, then download a pre-installed version of this app as a ZIP archive from [**www.php-proxy.com**](https://www.php-proxy.com/).
+
+**Direct Link:**  
+https://www.php-proxy.com/download/php-proxy.zip
 
 ## Keep it up-to-date
 
@@ -28,8 +31,8 @@ This file will be loaded into the global Config class.
 
 #### /templates/
 
-This should have been named "views", but for historic purposes we keep it as templates. What this is...
+This should have been named "views", but for historic purposes we keep it named as templates for now.
 
 #### /plugins/
 
-PHP-Proxy has many of its native plugins, but users are free to write their own which could then be loaded from this very folder. See /plugins/TestPlugin.php for an example.
+PHP-Proxy provides many of its own native plugins, but users are free to write their own custom plugins, which could then be automatically loaded from this very folder. See /plugins/TestPlugin.php for an example.

@@ -19,20 +19,20 @@ html body {
 	-webkit-user-select: none; 
 	-o-user-select: none; 
 	
-	border-bottom:1px solid #151515;
+	border-bottom:1px #B5B5B5;
 	
-    background:#FFC8C8;
+    background:#FFF;
 	
 	height:45px;
 	line-height:45px;
 }
 
 #top_form input[name=url] {
-	width: 550px;
+	width: 1300px;
 	height: 20px;
 	padding: 5px;
 	font: 13px "Helvetica Neue",Helvetica,Arial,sans-serif;
-	border: 0px none;
+	border: 1px #FFFF
 	background: none repeat scroll 0% 0% #FFF;
 }
 
@@ -61,16 +61,16 @@ function smart_select(ele){
 
 	<div style="width:800px; margin:0 auto;">
 	
-		<form method="post" action="index.php" target="_top" style="margin:0; padding:0;">
+		<form action="index.php" method="post" style="margin-bottom:0;">
 			<input type="button" value="Home" onclick="window.location.href='index.php'">
-			<input type="text" name="url" value="<?php echo $url; ?>" autocomplete="off">
-			<input type="hidden" name="form" value="1">
-			<input type="submit" value="Go">
+			<input name="url" type="text" style="width:650px;" autocomplete="off" placeholder="Url or search" />
+			<input type="submit" value="Go" />
 		</form>
 		
 	</div>
 	
 </div>
+
 
 <script type="text/javascript">
 	smart_select(document.getElementsByName("url")[0]);

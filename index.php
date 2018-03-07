@@ -10,7 +10,7 @@ use Proxy\Plugin\AbstractPlugin;
 use Proxy\Event\FilterEvent;
 use Proxy\Config;
 use Proxy\Proxy;
-
+use Proxy\plugin\YoutubePlugin;
 // start the session
 session_start();
 
@@ -42,12 +42,19 @@ session_write_close();
 if(isset($_POST['url'])){
 	
 	$url = $_POST['url'];
-	$url = add_http($url);
-	
-	header("HTTP/1.1 302 Found");
-	header('Location: '.proxify_url($url));
-	exit;
-	
+	if (strpos ($url, '.') !== false){
+		$url = add_http($url);
+		header("HTTP/1.1 302 Found");
+		header('Location: '.proxify_url($url));
+		exit;
+	}
+	else {
+		$url = 'http://www.google.com/search?q=' . urlencode($url);
+		$url = add_http($url);
+		header("HTTP/1.1 302 Found");
+		header('Location: '.proxify_url($url));
+		exit;
+	}
 } else if(!isset($_GET['q'])){
 
 	// must be at homepage - should we redirect somewhere else?

@@ -3,6 +3,15 @@ Web Proxy Application built on [**php-proxy library**](https://github.com/Athlon
 
 ![alt text](http://i.imgur.com/KrtU5KE.png?1 "This is how PHP-Proxy looks when installed")
 
+## To Do List
+
+As of **March 11**, 2018:
+
+* Plugin for facebook.com  
+* Plugin for dailymotion.com
+* Better Javascript support
+
+
 ## Installation
 
 Keep in mind that this is a **project** and not a library. Installing this via *require* would do you not good.

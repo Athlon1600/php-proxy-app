@@ -5,10 +5,11 @@ Web Proxy Application built on [**php-proxy library**](https://github.com/Athlon
 
 ## To Do List
 
-As of **March 11**, 2018:
+As of **March 25**, 2018:
 
 * Plugin for facebook.com  
 * Plugin for dailymotion.com
+* Better support/documentation for Plugin Development
 * Better Javascript support
 
 ## Web-Proxy vs Proxy Server

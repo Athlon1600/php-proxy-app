@@ -10,6 +10,7 @@ html body {
 	top:0;
 	left:0;
 	width: 100%;
+	transition: top 0.3s;
 	
 	margin:0;
 	
@@ -71,6 +72,20 @@ function smart_select(ele){
 	</div>
 	
 </div>
+
+// This part makes the top bar disappear when the user scrolls down the page. It shows again when they scroll up.
+<script>
+	var prevScrollpos = window.pageYOffset;
+	window.onscroll = function() {
+	var currentScrollPos = window.pageYOffset;
+  	if (prevScrollpos > currentScrollPos) {
+   	 	document.getElementById("top_form").style.top = "0";
+  	} else {
+   	 	document.getElementById("top_form").style.top = "-50px";
+  	}
+ 	 prevScrollpos = currentScrollPos;
+}
+</script>
 
 <script type="text/javascript">
 	smart_select(document.getElementsByName("url")[0]);

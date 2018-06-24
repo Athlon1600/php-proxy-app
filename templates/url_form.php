@@ -1,11 +1,8 @@
-
 <style type="text/css">
-
 html body {
 	margin-top: 50px !important;
 }
-
-#top_form {
+#php-proxy-bar {
 	position: fixed;
 	top:0;
 	left:0;
@@ -22,28 +19,67 @@ html body {
 	
 	border-bottom:1px solid #151515;
 	
-    background:#FFC8C8;
+    background:#073642;
 	
-	height:45px;
-	line-height:45px;
+	height:46px;
+	line-height:46px;
 }
-
-#top_form input[name=url] {
-	width: 550px;
-	height: 20px;
-	padding: 5px;
-	font: 13px "Helvetica Neue",Helvetica,Arial,sans-serif;
-	border: 0px none;
-	background: none repeat scroll 0% 0% #FFF;
+#php-proxy-form {
+	width: 800px;
+	margin: 8px auto 0;
 }
-
+#php-proxy-home {
+	margin: 0 2% 0 0;
+	background-color: #586E75;
+	color: #FDF6E3;
+	font-size: 24px;
+}
+#php-proxy-url {
+	margin: 0 2% 0 0;
+	width: 74%;
+	background-color: #FDF6E3;
+	color: #657B83;
+}
+#php-proxy-url:focus,
+#php-proxy-url:active,
+#php-proxy-go:focus,
+#php-proxy-go:active,
+#php-proxy-home:focus,
+#php-proxy-home:active {
+	outline: none;
+}
+#php-proxy-go {
+	margin: 0;
+	background-color: #2AA198;
+	background-image: none;
+	color: #FDF6E3;
+	line-height: normal;
+}
+#php-proxy-home,
+#php-proxy-go {
+	width: 10%;
+	text-align: center;
+	text-shadow: none;
+	cursor: pointer;
+}
+#php-proxy-home,
+#php-proxy-url,
+#php-proxy-go {
+	box-sizing: border-box;
+	display: block;
+	float: left;
+	padding: .5em;
+	height: 30px;
+	font-size: 14px;
+	border: none;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	border-radius: 0;
+}
 </style>
 
 <script>
 var url_text_selected = false;
-
 function smart_select(ele){
-
 	ele.onblur = function(){
 		url_text_selected = false;
 	};
@@ -58,32 +94,26 @@ function smart_select(ele){
 }
 </script>
 
-<div id="top_form">
-
-	<div style="width:800px; margin:0 auto;">
-	
-		<form method="post" action="index.php" target="_top" style="margin:0; padding:0;">
-			<input type="button" value="Home" onclick="window.location.href='index.php'">
-			<input type="text" name="url" value="<?php echo $url; ?>" autocomplete="off">
-			<input type="hidden" name="form" value="1">
-			<input type="submit" value="Go">
-		</form>
+<div id="php-proxy-bar">
+	<form id="php-proxy-form" method="post" action="index.php" target="_top">
+		<input id="php-proxy-home" type="button" value="Home" onclick="window.location.href='index.php'" />
+		<input id="php-proxy-url" type="text" name="url" value="<?php echo $url; ?>" autocomplete="off">
 		
-	</div>
-	
+		<input type="hidden" name="form" value="1">
+		<input id="php-proxy-go" type="submit" value="Go" />
+	</form>
 </div>
 
-// This part makes the top bar disappear when the user scrolls down the page. It shows again when they scroll up.
 <script>
-	var prevScrollpos = window.pageYOffset;
-	window.onscroll = function() {
-	var currentScrollPos = window.pageYOffset;
-  	if (prevScrollpos > currentScrollPos) {
-   	 	document.getElementById("top_form").style.top = "0";
-  	} else {
-   	 	document.getElementById("top_form").style.top = "-50px";
-  	}
- 	 prevScrollpos = currentScrollPos;
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("php-proxy-bar").style.top = "0";
+  } else {
+    document.getElementById("php-proxy-bar").style.top = "-50px";
+  }
+  prevScrollpos = currentScrollPos;
 }
 </script>
 

@@ -42,12 +42,12 @@ $config['curl'] = array(
 	// CURLOPT_CONNECTTIMEOUT => 5
 );
 
-//$config['replace_title'] = 'Google Search';
+$config['replace_title'] = 'Google Search';
 
 //$config['error_redirect'] = "https://unblockvideos.com/#error={error_msg}";
-//$config['index_redirect'] = 'https://unblockvideos.com/';
+$config['index_redirect'] = 'https://www.google.com.hk/';
 
-// $config['replace_icon'] = 'icon_url';
+$config['replace_icon'] = 'https://i.loli.net/2018/07/22/5b54603f14a04.jpeg';
 
 // this better be here other Config::load fails
 return $config;

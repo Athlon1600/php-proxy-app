@@ -2,88 +2,44 @@
 <html>
 <head>
 
-<title>Sneaky Sneaky</title>
+<title>PHP-Proxy</title>
 
 <meta name="generator" content="php-proxy.com">
 <meta name="version" content="<?=$version;?>">
 
 <style type="text/css">
-* {
-	box-sizing: border-box;
-}
-body {
-	padding-top: 6em;
-	background-color: #002B36;
-	color: #93A1A1;
+html body {
 	font-family: Arial,Helvetica,sans-serif;
-}
-a {
-	color: #93A1A1;
-}
-.url:focus,
-.url:active,
-.go:focus,
-.go:active {
-	outline: none;
-}
-.url {
-	width: 88%;
-	margin-right: 2%;
-	background-color: #FDF6E3;
-	color: #657B83;
-}
-.go {
-	width: 10%;
-	background-color: #2AA198;
-	color: #FDF6E3;
-	cursor: pointer;
-}
-.url,
-.go {
-	display: block;
-	padding: .5em;
-	float: left;
-	border: none;
-	font-size: 14px;
-}
-.container {
-	padding: 1em;
-	margin: 1em auto;
-	width: 36em;
-	background-color: #073642;
-}
-.container:after {
-	display: table;
-	content: '';
-	clear: both;
-}
-.footer {
-	text-align: center;
-	color: #f2f46e;
-}
-// For links
-a:link {
-    color: #f2f46e; 
-    background-color: transparent; 
-    text-decoration: none;
+	font-size: 12px;
 }
 
-a:visited {
-    color: #f2f46e;
-    background-color: transparent;
-    text-decoration: none;
+#container {
+	width:500px;
+	margin:0 auto;
+	margin-top:150px;
 }
 
-a:hover {
-    color: #f2f46e;
-    background-color: transparent;
-    text-decoration: underline;
+#error {
+	color:red;
+	font-weight:bold;
 }
 
-a:active {
-    color: #f2f46e;
-    background-color: transparent;
-    text-decoration: underline;
+#frm {
+	padding:10px 15px;
+	background-color:#FFC8C8;
+	
+	border:1px solid #818181;
+	
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+
+#footer {
+	text-align:center;
+	font-size:10px;
+	margin-top:35px;
+	clear:both;
 }
 </style>
 
@@ -92,10 +48,10 @@ a:active {
 <body>
 
 
-<div class="container">
+<div id="container">
 
 	<div style="text-align:center;">
-		<h1>Sneaky Sneaky</h1>
+		<h1 style="color:blue;">PHP-Proxy</h1>
 	</div>
 	
 	<?php if(isset($error_msg)){ ?>
@@ -110,9 +66,9 @@ a:active {
 	
 	<!-- I wouldn't touch this part -->
 	
-		<form action="index.php" method="post">
-			<input class="url" name="url" type="text" autocomplete="off" placeholder="URL or search" />
-			<input class="go" type="submit" value="Go" />
+		<form action="index.php" method="post" style="margin-bottom:0;">
+			<input name="url" type="text" style="width:400px;" autocomplete="off" placeholder="http://" />
+			<input type="submit" value="Go" />
 		</form>
 		
 		<script type="text/javascript">
@@ -124,8 +80,11 @@ a:active {
 	</div>
 	
 </div>
+
 <div id="footer">
-	Powered by php-proxy.
+	Powered by <a href="//www.php-proxy.com/" target="_blank">PHP-Proxy</a> <?php echo $version; ?>
 </div>
+
+
 </body>
 </html>

@@ -1,55 +1,51 @@
 <?php
-
 define('PROXY_START', microtime(true));
-
 require("vendor/autoload.php");
-
 use Proxy\Http\Request;
 use Proxy\Http\Response;
 use Proxy\Plugin\AbstractPlugin;
 use Proxy\Event\FilterEvent;
 use Proxy\Config;
 use Proxy\Proxy;
-
+use Proxy\plugin\YoutubePlugin;
 // start the session
 session_start();
-
 // load config...
 Config::load('./config.php');
-
 // custom config file to be written to by a bash script or something
 Config::load('./custom_config.php');
-
 if(!Config::get('app_key')){
 	die("app_key inside config.php cannot be empty!");
 }
-
 if(!function_exists('curl_version')){
 	die("cURL extension is not loaded!");
 }
-
 // how are our URLs be generated from this point? this must be set here so the proxify_url function below can make use of it
 if(Config::get('url_mode') == 2){
 	Config::set('encryption_key', md5(Config::get('app_key').$_SERVER['REMOTE_ADDR']));
 } else if(Config::get('url_mode') == 3){
 	Config::set('encryption_key', md5(Config::get('app_key').session_id()));
 }
-
 // very important!!! otherwise requests are queued while waiting for session file to be unlocked
 session_write_close();
-
 // form submit in progress...
 if(isset($_POST['url'])){
 	
 	$url = $_POST['url'];
-	$url = add_http($url);
-	
-	header("HTTP/1.1 302 Found");
-	header('Location: '.proxify_url($url));
-	exit;
-	
+	if (strpos ($url, '.') !== false){
+		$url = add_http($url);
+		header("HTTP/1.1 302 Found");
+		header('Location: '.proxify_url($url));
+		exit;
+	}
+	else {
+		$url = 'https://www.google.com/search?q=' . urlencode($url);
+		$url = add_http($url);
+		header("HTTP/1.1 302 Found");
+		header('Location: '.proxify_url($url));
+		exit;
+	}
 } else if(!isset($_GET['q'])){
-
 	// must be at homepage - should we redirect somewhere else?
 	if(Config::get('index_redirect')){
 		
@@ -60,18 +56,13 @@ if(isset($_POST['url'])){
 	} else {
 		echo render_template("./templates/main.php", array('version' => Proxy::VERSION));
 	}
-
 	exit;
 }
-
 // decode q parameter to get the real URL
 $url = url_decrypt($_GET['q']);
-
 $proxy = new Proxy();
-
 // load plugins
 foreach(Config::get('plugins', array()) as $plugin){
-
 	$plugin_class = $plugin.'Plugin';
 	
 	if(file_exists('./plugins/'.$plugin_class.'.php')){
@@ -88,9 +79,7 @@ foreach(Config::get('plugins', array()) as $plugin){
 	// otherwise plugin_class better be loaded already through composer.json and match namespace exactly \\Vendor\\Plugin\\SuperPlugin
 	$proxy->getEventDispatcher()->addSubscriber(new $plugin_class());
 }
-
 try {
-
 	// request sent to index.php
 	$request = Request::createFromGlobals();
 	
@@ -104,7 +93,6 @@ try {
 	$response->send();
 	
 } catch (Exception $ex){
-
 	// if the site is on server2.proxy.com then you may wish to redirect it back to proxy.com
 	if(Config::get("error_redirect")){
 	
@@ -126,5 +114,4 @@ try {
 		
 	}
 }
-
 ?>

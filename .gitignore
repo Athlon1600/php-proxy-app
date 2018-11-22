@@ -2,3 +2,4 @@
 /storage/*
 composer.lock
 .htaccess
+favicon.ico

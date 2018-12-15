@@ -3,6 +3,23 @@ Web Proxy Application built on [**php-proxy library**](https://github.com/Athlon
 
 ![alt text](http://i.imgur.com/KrtU5KE.png?1 "This is how PHP-Proxy looks when installed")
 
+## To Do List
+
+As of **March 25**, 2018:
+
+* Plugin for facebook.com  
+* Plugin for dailymotion.com
+* Better support/documentation for Plugin Development
+* Better Javascript support
+
+## Web-Proxy vs Proxy Server
+
+Keep in mind that sites/pages that are too script-heavy or with too many "dynamic parts", may not work with this proxy script.
+That is a known limitation of web proxies. For such sites, you should use an actual proxy server to route your browser's HTTP requests through:  
+
+https://www.proxynova.com/proxy-software/
+
+
 ## Installation
 
 Keep in mind that this is a **project** and not a library. Installing this via *require* would do you not good.

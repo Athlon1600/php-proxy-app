@@ -57,7 +57,7 @@ html body {
 	<?php if(isset($error_msg)){ ?>
 	
 	<div id="error">
-		<p><?php echo $error_msg; ?></p>
+		<p><?php echo strip_tags($error_msg); ?></p>
 	</div>
 	
 	<?php } ?>

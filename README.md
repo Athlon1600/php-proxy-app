@@ -38,7 +38,7 @@ A project such as this, should be installed straight into the public directory o
 composer create-project athlon1600/php-proxy-app:dev-master /var/www/
 ```
 
-If you do not have composer or trying to host this application on a **shared hosting**, then download a pre-installed version of this app as a ZIP archive from [**www.php-proxy.com**](https://www.php-proxy.com/).
+If you do not have composer or trying to host this application on either a **shared hosting**, or a VPS hosting with limited permissions (dreamhost.com), then download a pre-installed version of this app as a ZIP archive from [**www.php-proxy.com**](https://www.php-proxy.com/).
 
 **Direct Link:**  
 https://www.php-proxy.com/download/php-proxy.zip

@@ -33,6 +33,7 @@ $config['plugins'] = array(
 	'RedTube',
 	'XHamster',
 	'XVideos',
+	'Xnxx',
 	'Pornhub',
 	'Twitter'
 );

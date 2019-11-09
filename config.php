@@ -47,6 +47,9 @@ $config['curl'] = array(
 	// CURLOPT_CONNECTTIMEOUT => 5
 );
 
+// set a custom folder to save logs (requires plugin Log)
+//$config['custom_logs_folder'] = '/var/logs';
+
 //$config['replace_title'] = 'Google Search';
 
 //$config['error_redirect'] = "https://unblockvideos.com/#error={error_msg}";

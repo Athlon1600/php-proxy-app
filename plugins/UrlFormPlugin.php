@@ -1,5 +1,6 @@
 <?php
 
+use Proxy\Config;
 use Proxy\Event\ProxyEvent;
 use Proxy\Plugin\AbstractPlugin;
 
@@ -24,6 +25,14 @@ class UrlFormPlugin extends AbstractPlugin
         ));
 
         $output = $response->getContent();
+
+        // remove favicon if so
+        if (Config::get('replace_icon')) {
+
+            $output = preg_replace_callback('/<link[^>]+rel=".*?(?:shortcut|icon).*?"[^>]+>/', function ($matches) {
+                return "";
+            }, $output);
+        }
 
         // does the html page contain <body> tag, if so insert our form right after <body> tag starts
         $output = preg_replace('@<body.*?>@is', '$0' . PHP_EOL . $url_form, $output, 1, $count);

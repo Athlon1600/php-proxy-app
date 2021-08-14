@@ -1,6 +1,6 @@
 <?php
 
-define('PROXY_START', microtime(true));
+const PROXY_START = microtime(true);
 
 require("vendor/autoload.php");
 

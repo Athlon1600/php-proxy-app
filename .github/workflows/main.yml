@@ -1,17 +1,11 @@
 name: PHP Proxy App CI
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
       - master
-
-  pull_request:
-    branches:
-      - main
-      - master
-
-  workflow_dispatch:
 
 jobs:
   build:
@@ -25,28 +19,20 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1'
-          extensions: curl, mbstring, openssl
-          coverage: none
-
-      - name: Validate Composer
-        run: composer validate --no-check-publish
-
-      - name: Install Dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Set Permissions
         run: chmod -R 755 .
 
-      - name: Run PHP Built-in Server
+      - name: Start PHP Server
         run: |
           php -S localhost:8000 > /dev/null 2>&1 &
           sleep 5
 
-      - name: Test Homepage
+      - name: Test Application
         run: |
           curl -I http://localhost:8000
 
-      - name: Archive Project
+      - name: Create ZIP
         run: zip -r php-proxy-app.zip . -x "*.git*"
 
       - name: Upload Artifact

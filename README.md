@@ -1,10 +1,7 @@
-
-<center>
-  
-![](https://img.shields.io/packagist/dt/Athlon1600/php-proxy-app.svg) ![](https://img.shields.io/github/last-commit/Athlon1600/php-proxy-app.svg) ![](https://img.shields.io/github/license/Athlon1600/php-proxy-app.svg)
-
-</center>
-
+[![Build](https://github.com/Athlon1600/php-proxy-app/actions/workflows/build.yml/badge.svg)](https://github.com/Athlon1600/php-proxy-app/actions/workflows/build.yml)
+![](https://img.shields.io/packagist/dt/Athlon1600/php-proxy-app.svg)
+![](https://img.shields.io/github/last-commit/Athlon1600/php-proxy-app.svg)
+![](https://img.shields.io/github/license/Athlon1600/php-proxy-app.svg)
 
 # php-proxy-app
 
@@ -29,7 +26,25 @@ That is a known limitation of web proxies. For such sites, you should use an act
 https://www.proxynova.com/proxy-software/
 
 
-## Installation
+## 🐋 Deploy using Docker
+
+Install Docker first:
+
+```shell
+curl -sSL https://get.docker.com/ | sh
+```
+
+And then run:
+
+```shell
+docker run -d -p 8080:80 -p 8443:443 dwaaan/php-proxy
+```
+
+Credits to:
+- https://github.com/dwaaan/PHP-Proxy-Docker
+
+
+## 🔨 Manual Installation
 
 Keep in mind that this is a **project** and not a library. Installing this via *require* would do you not good.
 A project such as this, should be installed straight into the public directory of your web server.
@@ -38,7 +53,7 @@ A project such as this, should be installed straight into the public directory o
 composer create-project athlon1600/php-proxy-app:dev-master /var/www/
 ```
 
-If you do not have composer or trying to host this application on either a **shared hosting**, or a VPS hosting with limited permissions (dreamhost.com), then download a pre-installed version of this app as a ZIP archive from [**www.php-proxy.com**](https://www.php-proxy.com/).
+If you do not have Composer or trying to host this application on either a **shared hosting**, or a VPS hosting with limited permissions (dreamhost.com), then download a pre-installed version of this app as a ZIP archive from [**www.php-proxy.com**](https://www.php-proxy.com/).
 
 **Direct Link:**  
 https://www.php-proxy.com/download/php-proxy.zip

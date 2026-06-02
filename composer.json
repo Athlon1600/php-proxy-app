@@ -6,6 +6,8 @@
 	"keywords": ["php proxy application", "php proxy web", "proxy script", "php web proxy", "web proxy"],
 	"homepage": "https://www.php-proxy.com/",
 	"require": {
+		"php": "^7.4|^8.0",
+		"ext-curl": "*",
 		"athlon1600/php-proxy": "^5.0.1"
 	},
 	"scripts": {

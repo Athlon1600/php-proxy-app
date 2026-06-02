@@ -1,7 +1,8 @@
 [![Build](https://github.com/Athlon1600/php-proxy-app/actions/workflows/build.yml/badge.svg)](https://github.com/Athlon1600/php-proxy-app/actions/workflows/build.yml)
-![](https://img.shields.io/packagist/dt/Athlon1600/php-proxy-app.svg)
-![](https://img.shields.io/github/last-commit/Athlon1600/php-proxy-app.svg)
 ![](https://img.shields.io/github/license/Athlon1600/php-proxy-app.svg)
+![](https://img.shields.io/packagist/dt/Athlon1600/php-proxy-app.svg)
+![Docker Pulls](https://img.shields.io/docker/pulls/dwaaan/php-proxy)
+![](https://img.shields.io/github/last-commit/Athlon1600/php-proxy-app.svg)
 
 # php-proxy-app
 

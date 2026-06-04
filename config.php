@@ -38,16 +38,7 @@ $config['plugins'] = array(
     // ^^ do not disable any of the plugins above
     'Cookie',
     'Proxify',
-    'UrlForm',
-    // site specific plugins below
-    'Youtube',
-    'DailyMotion',
-    'RedTube',
-    'XHamster',
-    'XVideos',
-    'Xnxx',
-    'Pornhub',
-    'Twitter'
+    'UrlForm'
 );
 
 // additional curl options to go with each request

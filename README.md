@@ -42,17 +42,12 @@ Credits to:
 
 ## 🔨 Manual Installation
 
-Keep in mind that this is a **project** and not a library. Installing this via *require* would do you not good.
-A project such as this, should be installed straight into the public directory of your web server.
+Keep in mind that this is a **project** and not a library. Installing this via `composer require` would do you no good.
+A project such as this should be installed straight into the public directory of your web server.
 
 ```bash
-composer create-project athlon1600/php-proxy-app:dev-master /var/www/
+composer create-project athlon1600/php-proxy-app:"^4.0" /var/www/
 ```
-
-If you do not have Composer or trying to host this application on either a **shared hosting**, or a VPS hosting with limited permissions (dreamhost.com), then download a pre-installed version of this app as a ZIP archive from [**www.php-proxy.com**](https://www.php-proxy.com/).
-
-**Direct Link:**  
-https://www.php-proxy.com/download/php-proxy.zip
 
 ## Keep it up-to-date
 

@@ -33,8 +33,8 @@ $config['expose_php'] = true;
 
 // plugins to load - plugins will be loaded in this exact order as in array
 $config['plugins'] = array(
-    'HeaderRewrite',
-    'Stream',
+    \Proxy\Plugin\HeaderRewritePlugin::class,
+    \Proxy\Plugin\StreamPlugin::class,
     // ^^ do not disable any of the plugins above
     'Cookie',
     'Proxify',

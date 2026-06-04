@@ -80,20 +80,24 @@ foreach (Config::get('plugins', array()) as $plugin) {
     $plugin_class = $plugin . 'Plugin';
 
     if (file_exists('./plugins/' . $plugin_class . '.php')) {
-
-        // use user plugin from /plugins/
         require_once('./plugins/' . $plugin_class . '.php');
-
-    } elseif (class_exists('\\Proxy\\Plugin\\' . $plugin_class)) {
-
-        // does the native plugin from php-proxy package with such name exist?
-        $plugin_class = '\\Proxy\\Plugin\\' . $plugin_class;
+    } else if (file_exists('./plugins/' . $plugin . '.php')) {
+        require_once('./plugins/' . $plugin . '.php');
     }
 
-    // otherwise plugin_class better be loaded already through composer.json and match namespace exactly \\Vendor\\Plugin\\SuperPlugin
-    // $proxy->getEventDispatcher()->addSubscriber(new $plugin_class());
+    // where to search for this class?
+    $searchForClasses = [
+        $plugin,
+        $plugin_class,
+        '\\Proxy\\Plugin\\' . $plugin_class
+    ];
 
-    $proxy->addSubscriber(new $plugin_class());
+    foreach ($searchForClasses as $class) {
+
+        if (class_exists($class)) {
+            $proxy->addSubscriber(new $class());
+        }
+    }
 }
 
 try {
